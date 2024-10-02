@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\BarangController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -19,3 +19,6 @@ Route::get('/dashboard', function () {
 
 
 Route ::get('dashboard', [App\Http\Controllers\landingPageController::class,'index']);
+Route::get('/barang', [BarangController::class, 'index'])->name('barang.index');
+Route::get('/barang/create', [BarangController::class, 'create'])->name('barang.create');
+Route::post('/barang', [BarangController::class, 'store'])->name('barang.store');
