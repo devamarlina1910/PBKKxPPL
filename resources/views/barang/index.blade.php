@@ -22,14 +22,22 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach($barang as $item)
+                @foreach($barang as $br)
                 <tr>
                     <td>{{ $loop->iteration }}</td>
-                    <td>{{ $item->nama_barang }}</td>
-                    <td>{{ $item->stok }}</td>
-                    <td>{{ $item->kategori }}</td>
-                    <td>{{ $item->tanggal_masuk }}</td>
-                    <td>{{ $item->tersedia ? 'Tersedia' : 'Tidak Tersedia' }}</td>
+                    <td>{{ $br->nama_barang }}</td>
+                    <td>{{ $br->stok }}</td>
+                    <td>{{ $br->kategori }}</td>
+                    <td>{{ $br->tanggal_masuk }}</td>
+                    <td>{{ $br->tersedia ? 'Tersedia' : 'Tidak Tersedia' }}</td>
+                    <td>
+                        <a href="{{ route('edit', $br->id) }}">edit</a>
+                        <form action="{{ route('destroy', $br->id) }}" method="POST">
+                            @csrf
+                            @method('DELETE')
+                            <button>hapus</button>
+                        </form>
+                    </td>
                 </tr>
                 @endforeach
             </tbody>

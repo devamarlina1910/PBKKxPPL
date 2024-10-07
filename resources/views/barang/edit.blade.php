@@ -1,46 +1,44 @@
-@extends('layouts.app') 
-
-@section('content')
-<div class="container">
-    <h2>Daftar Barang</h2>
-
-    @if(session('success'))
-        <div class="alert alert-success">{{ session('success') }}</div>
-    @endif
-
-    <a href="{{ route('barang.create') }}" class="btn btn-primary mb-3">Tambah Barang</a>
-
-    <table class="table table-bordered">
-        <thead>
-            <tr>
-                <th>Nama Barang</th>
-                <th>Stok</th>
-                <th>Kategori</th>
-                <th>Tanggal Masuk</th>
-                <th>Tersedia</th>
-                <th>Aksi</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach ($barangs as $item)
-                <tr>
-                    <td>{{ $item->nama_barang }}</td>
-                    <td>{{ $item->stok }}</td>
-                    <td>{{ $item->kategori }}</td>
-                    <td>{{ $item->tanggal_masuk }}</td>
-                    <td>{{ $item->tersedia ? 'Ya' : 'Tidak' }}</td>
-                    <td>
-                        <a href="{{ route('barang.edit', $item->id) }}" class="btn btn-warning">Edit</a>
-                        
-                        <form action="{{ route('barang.destroy', $item->id) }}" method="POST" style="display:inline;">
-                            @csrf
-                            @method('DELETE')
-                            <button type="submit" class="btn btn-danger">Hapus</button>
-                        </form>
-                    </td>
-                </tr>
-            @endforeach
-        </tbody>
-    </table>
-</div>
-@endsection
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <form action="{{route('update', $barang->id)}}" method="POST">
+        @method('PUT')
+        @csrf
+        <input type="text" name="no" placeholder="masukkan no" value="{{old('no', $barang->no)}}">
+        @error('no')
+            {{$message}}
+        @enderror
+        <input type="text" name="nama barang" placeholder="masukkan nama barang" value="{{old('nama barang', $barang->nama_barang)}}">
+        @error('nama barang')
+            {{$message}}
+        @enderror
+       <input type="number" name="stok" placeholder="masukkan stok" value="{{old('stok', $barang->stok)}}">
+        @error('stok')
+            {{$message}}
+        @enderror
+        <input type="text" name="kategori" placeholder="masukkan kategori" value="{{old('kategori', $barang->kategori)}}">
+        @error('kategori')
+            {{$message}}
+        @enderror
+        <input type="date" name="tanggal masuk" placeholder="masukkan tanggal masuk" value="{{old('tanggal masuk', $barang->tanggal_masuk)}}">
+        @error('tanggal_masuk')
+            {{$message}}
+        @enderror
+        <input type="text" name="tersedia" placeholder="masukkan tersedia" value="{{old('tersedia', $barang->tersedia)}}">
+        @error('tersedia')
+            {{$message}}
+        @enderror
+        <select name="status">
+            <option value="Tersedia">Tersedia</option>
+            <option value="Tidak Tersedia">Tidak Tersedia</option>
+        </select>
+        <input type="submit" value="simpan">
+    </form>
+</body>
+</html>
