@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\Transaksi;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -19,4 +20,17 @@ class DatabaseSeeder extends Seeder
         //     'email' => 'test@example.com',
         // ]);
     }
+
+    $barang1 = Barang::create([
+        'nama_barang' => 'Laptop',
+        'stok' => 10,
+        'kategori' => 'elektronik',
+        'tanggal_masuk' => Carbon::now(),
+        'tersedia' => 1
+    ]);
+    Transaksi::create([
+        'id_barang' => $barang1->id,
+        'id_user' => 1,
+        'status' => 'dipinjam'
+    ]);
 }

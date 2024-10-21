@@ -29,7 +29,7 @@ class BarangController extends Controller
             'tersedia' => 'required|boolean',
         ]);
 
-        Barang::create($validated);
+        $barang = Barang::create($validated);
         return redirect()->route('barang.index')->with('success', 'Barang berhasil ditambahkan');
     }
 
@@ -61,5 +61,12 @@ class BarangController extends Controller
         $barang->delete();
         return redirect()->route('barang.index')->with('success', 'Barang berhasil dihapus');
     }
+    
+    public function show($id)
+{
+    $barang = Barang::with('transaksis')->findOrFail($id);
+    return view('barang.show', compact('barang'));
+}
+
 }
     
