@@ -9,8 +9,9 @@ class Transaksi extends Model
 {
     use HasFactory;
     protected $fillable = [
+        'nama_barang',
         'barang_id', // Kolom ini adalah foreign key yang mengacu pada tabel barangs
-        'jumlah',
+        'jumlah_transaksi',
         'tanggal_transaksi',
     ];
     // Relasi Many-to-One

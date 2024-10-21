@@ -17,7 +17,7 @@ class Barang extends Model
         'tersedia',
     ];
 
-    public function transaksi()
+    public function transaksis()
     {
         return $this->hasMany(Transaksi::class);
     }
