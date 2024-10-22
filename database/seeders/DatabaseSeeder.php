@@ -42,20 +42,28 @@ use Carbon\Carbon;
          'tersedia' => 1 
      ]);
      
-    //membuat transaksi barang pertama
-     $transaksi1 = Transaksi::create([ 
-        'nama_barang' => 'Laptop',
-         'barang_id' => $barang1->id, 
-         'jumlah_transaksi' => 1, 
-         'tanggal_transaksi' => Carbon::now()   
-     ]);
-     
-     //membuat transaksi barang kedua
+    //membuat transaksi pertama
      $transaksi2 = Transaksi::create([ 
-         'nama_barang' => 'Mouse',
-         'barang_id' => $barang1->id, 
-         'jumlah_transaksi' => 1, 
-         'tanggal_transaksi' => Carbon::now()
-     ]);
-}
-}
+
+        'barang_id' => $barang2->id, 
+        'jumlah_transaksi' => 1, 
+        'tanggal_transaksi' => Carbon::now()
+    ]);
+    
+    //membuat transaksi kedua
+     $transaksi1 = Transaksi::create([ 
+        'barang_id' => $barang1->id, 
+        'jumlah_transaksi' => 1, 
+        'tanggal_transaksi' => Carbon::now()
+    ]);
+
+   //barang1, barang2
+    $barang1->transaksis()->attach($barang1);
+    $barang1->transaksis()->attach($barang1);
+    $barang1->transaksis()->attach($barang2);
+    
+    $transaksi1->barangs()->attach($barang2);
+    
+    $transaksi2->barangs()->attach($barang1);
+    $transaksi2->barangs()->attach($barang2);
+}}
