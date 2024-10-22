@@ -8,14 +8,17 @@ use Illuminate\Database\Eloquent\Model;
 class Transaksi extends Model
 {
     use HasFactory;
+
+    protected $table = 'transaksi';
     protected $fillable = [
-        'barang_id', 
+        'barang_id', // Kolom ini adalah foreign key yang mengacu pada tabel barangs
         'jumlah_transaksi',
         'tanggal_transaksi',
     ];
-    // Relasi Many-to-Many
-    public function barang()
+
+    // Relasi One to Many
+    public function barangs()
     {
-        return $this->belongsToMany(Barang::class);
+        return $this->belongsTo(Barang::class);
     }
 }

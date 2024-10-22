@@ -61,12 +61,11 @@ class BarangController extends Controller
         $barang->delete();
         return redirect()->route('barang.index')->with('success', 'Barang berhasil dihapus');
     }
-    
-    public function show($id)
-{
-    $barang = Barang::with('transaksis')->findOrFail($id);
-    return view('barang.show', compact('barang'));
-}
 
+    public function show($id)
+    {
+        $barang = Barang::with('transaksis')->findOrFail($id);
+        return view('barang.show', compact('barang'));
+    }
 }
     

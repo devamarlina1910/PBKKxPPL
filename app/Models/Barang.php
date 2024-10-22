@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Barang extends Model
 {
     use HasFactory;
+
     protected $table = 'barangs';
     protected $fillable = [
         'nama_barang',
@@ -17,6 +18,7 @@ class Barang extends Model
         'tersedia',
     ];
 
+    // Relasi One-to-Many
     public function transaksis()
     {
         return $this->hasMany(Transaksi::class);
