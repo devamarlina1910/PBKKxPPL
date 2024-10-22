@@ -10,11 +10,11 @@ class CreateBarangTable extends Migration
     {
         Schema::create('barang', function (Blueprint $table) {
             $table->id();
-            $table->string('nama_barang');            // Tipe data string
-            $table->integer('stok');                  // Tipe data number (integer)
+            $table->string('nama_barang');            
+            $table->integer('stok');                  
             $table->enum('kategori', ['elektronik', 'fashion', 'alat_tulis', 'rumah_tangga', 'lainnya']); // Tipe data enum
-            $table->date('tanggal_masuk');            // Tipe data date
-            $table->boolean('tersedia');              // Tipe data boolean
+            $table->date('tanggal_masuk');            
+            $table->boolean('tersedia');              
             $table->timestamps();
         });
     }

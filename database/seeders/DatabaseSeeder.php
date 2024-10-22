@@ -23,7 +23,8 @@ use Carbon\Carbon;
          //     'email' => 'test@example.com', 
          // ]); 
      
-  
+         
+    //membuat barang pertama  
      $barang1 = Barang::create([ 
          'nama_barang' => 'Laptop', 
          'stok' => 10, 
@@ -31,7 +32,8 @@ use Carbon\Carbon;
          'tanggal_masuk' => Carbon::now(), 
          'tersedia' => 1 
      ]); 
-
+     
+    //membuat barang kedua  
      $barang2 = Barang::create([ 
          'nama_barang' => 'Mouse', 
          'stok' => 15, 
@@ -40,44 +42,18 @@ use Carbon\Carbon;
          'tersedia' => 1 
      ]);
      
+    //membuat transaksi barang pertama
      $transaksi1 = Transaksi::create([ 
         'nama_barang' => 'Laptop',
          'barang_id' => $barang1->id, 
          'jumlah_transaksi' => 1, 
-         'tanggal_transaksi' => Carbon::now()
-         
-     ]);
-     $transaksi2 = Transaksi::create([ 
-         'nama_barang' => 'Laptop',
-         'barang_id' => $barang1->id, 
-         'jumlah_transaksi' => 1, 
-         'tanggal_transaksi' => Carbon::now()
+         'tanggal_transaksi' => Carbon::now()   
      ]);
      
-     $transaksi3 = Transaksi::create([ 
-         'nama_barang' => 'Laptop',
+     //membuat transaksi barang kedua
+     $transaksi2 = Transaksi::create([ 
+         'nama_barang' => 'Mouse',
          'barang_id' => $barang1->id, 
-         'jumlah_transaksi' => 1, 
-         'tanggal_transaksi' => Carbon::now()
-     ]);
-
-     $transaksi4 = Transaksi::create([ 
-         'nama_barang' => ' Mouse',
-         'barang_id' => $barang2->id, 
-         'jumlah_transaksi' => 1, 
-         'tanggal_transaksi' => Carbon::now()
-     ]);
-
-     $transaksi5 = Transaksi::create([ 
-         'nama_barang' => 'Mouse',
-         'barang_id' => $barang2->id, 
-         'jumlah_transaksi' => 1, 
-         'tanggal_transaksi' => Carbon::now()
-     ]);
-
-     $transaksi6 = Transaksi::create([ 
-         'nama_barang' => 'Mouse',
-         'barang_id' => $barang2->id, 
          'jumlah_transaksi' => 1, 
          'tanggal_transaksi' => Carbon::now()
      ]);
